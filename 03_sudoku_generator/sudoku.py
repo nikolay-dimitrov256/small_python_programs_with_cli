@@ -1,4 +1,5 @@
 import random
+from copy import copy
 
 
 class Sudoku:
@@ -6,7 +7,6 @@ class Sudoku:
         self.name = name
         self.board = [[0] * 9 for _ in range(9)]
         self.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        random.shuffle(self.numbers)
         self.__fill(0, 0)
         self.player_board = [[0] * 9 for _ in range(9)]
         self.__place_numbers()
@@ -37,7 +37,10 @@ class Sudoku:
         if self.board[row][col] != 0:
             return self.__fill(row, col + 1)
 
-        for num in self.numbers:
+        numbers = copy(self.numbers)
+        random.shuffle(numbers)
+
+        for num in numbers:
             if self.__is_valid_move(self.board, row, col, num):
                 self.board[row][col] = num
 
