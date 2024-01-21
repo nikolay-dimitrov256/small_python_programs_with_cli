@@ -57,9 +57,9 @@ def write_sudoku_on_sheet(start_row: int):
             sheet_row = start_row + row + 1
             if value != 0:
                 sheet[f'{col_letter}{sheet_row}'] = value
-                sheet[f'{col_letter}{sheet_row}'].font = Font(size=20, bold=True, color='003AFF')
-            else:
                 sheet[f'{col_letter}{sheet_row}'].font = Font(size=20, bold=True)
+            else:
+                sheet[f'{col_letter}{sheet_row}'].font = Font(size=20, bold=True, color='003AFF')
 
             sheet[f'{col_letter}{sheet_row}'].alignment = Alignment(horizontal='center', vertical='center')
 
